@@ -1,0 +1,27 @@
+{
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+  "files.associations": {
+    ".eslintrc": "jsonc",
+    ".prettierrc": "jsonc",
+    ".stylelintrc": "jsonc",
+    ".optipackrc": "jsonc",
+    ".releaserc": "jsonc",
+    ".renovaterc": "jsonc",
+    "*.ejs.t": "html"
+  },
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/node_modules": true
+  },
+  "json.schemas": [
+    {
+      "fileMatch": [".renovaterc"],
+      "url": "http://docs.renovatebot.com/renovate-schema.json"
+    }
+  ]
+}
