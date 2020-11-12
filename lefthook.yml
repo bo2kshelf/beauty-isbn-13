@@ -1,0 +1,33 @@
+commit-msg:
+  commands:
+    commitlint:
+      run: commitlint --edit ./.git/COMMIT_EDITMSG
+
+pre-commit:
+  parallel: true
+  commands:
+    eslint:
+      tags: frontend lint
+      files: git diff --name-only --staged
+      glob: '*.{js,ts}'
+      run: eslint {staged_files}
+    prettier:
+      tags: frontend lint
+      files: git diff --name-only --staged
+      glob: '*.{json,yml,yaml,md}'
+      run: prettier --check {staged_files}
+    prettier-rcfiles:
+      tags: frontend lint
+      files: git diff --name-only --staged
+      glob: '.{eslint,prettier,renovate,optipack,release}rc'
+      run: prettier --check {staged_files} --parser json
+    validate-codecov:
+      tags: infra lint
+      files: git diff --name-only --staged
+      glob: 'codecov.yml'
+      run: cat codecov.yml | curl --data-binary @- https://codecov.io/validate
+    validate-renovate:
+      tags: infra lint
+      files: git diff --name-only --staged
+      glob: '.renovaterc'
+      run: npx --package renovate -c 'renovate-config-validator'

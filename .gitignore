@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+
+# Output
+lib/
+
+# Test
+coverage/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+
+# Environment
+.env*
